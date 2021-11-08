@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const PersonSchema = require('./modelos/Person.js');
+require('dotenv').config();
 
 const app = express();
 const router = express.Router();
@@ -9,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Conexion a la base de datos
-mongoose.connect("mongodb+srv://pro_web:w3tthsmCHUjCHQw@clusterbookapp.71ei1.mongodb.net/jobInterviewDB?retryWrites=true&w=majority");
+mongoose.connect(`mongodb+srv://pro_web:${ process.env.MONGO_PASSWORD }@clusterbookapp.71ei1.mongodb.net/jobInterviewDB?retryWrites=true&w=majority`);
 
 // Operaciones CRUD
 
